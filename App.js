@@ -9,7 +9,7 @@ app.use(cookieParser())
 app.get('/hello', function(req, res) {
 
 console.log(JSON.stringify(req.cookies));
-  if (req.cookies){
+  if (req.cookies.name !== undefined){
     let cookie = req.cookies.name;
     res.send('Welcome ' + cookie + "!");
   } else{
@@ -24,7 +24,7 @@ app.get('/', function(req, res) {
 
 app.post('/login', (req, res) => {
     let cookie = req.body
-    res.cookie(cookie.name);
+    res.cookie("name", cookie.name);
 
     res.end();
   })
